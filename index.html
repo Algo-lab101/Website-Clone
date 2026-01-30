@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formula 1 Official Homepage 2026">
+    <title>Formula 1 - Official Homepage</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- ==================== NAVIGATION ==================== -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">F1</span>
+                <span class="logo-sub">FORMULA 1</span>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="#drivers">Drivers</a></li>
+                <li><a href="#teams">Teams</a></li>
+                <li><a href="#gaming">Fantasy & Gaming</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <button class="search-btn" aria-label="Search">🔍</button>
+                <button class="menu-toggle" aria-label="Menu" onclick="toggleMenu()">☰</button>
+            </div>
+
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="#schedule">Schedule</a>
+                <a href="#results">Results</a>
+                <a href="#news">News</a>
+                <a href="#drivers">Drivers</a>
+                <a href="#teams">Teams</a>
+                <a href="#gaming">Fantasy & Gaming</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO CAROUSEL ==================== -->
+    <section class="hero-section">
+        <div class="hero-carousel">
+            <div class="hero-slide active" style="background-image: url('./images/Next%20race.jpg')">
+                <div class="hero-content">
+                    <h1 class="hero-title">NEXT RACE</h1>
+                    <p class="hero-subtitle">Bahrain Grand Prix</p>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('./Championship')">
+                <div class="hero-content">
+                    <h1 class="hero-title">CHAMPIONSHIP</h1>
+                    <p class="hero-subtitle">2025 Season Underway</p>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('./latest%20action')">
+                <div class="hero-content">
+                    <h1 class="hero-title">LATEST ACTION</h1>
+                    <p class="hero-subtitle">Barcelona Shakedown</p>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('./Team%20battles')">
+                <div class="hero-content">
+                    <h1 class="hero-title">TEAM BATTLES</h1>
+                    <p class="hero-subtitle">2025 Championship Fight</p>
+                </div>
+            </div>
+            <div class="hero-slide" style="background-image: url('./drivers%20focus')">
+                <div class="hero-content">
+                    <h1 class="hero-title">DRIVER FOCUS</h1>
+                    <p class="hero-subtitle">Top Performers</p>
+                </div>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+        <button class="hero-arrow prev" onclick="prevHeroSlide()">❮</button>
+        <button class="hero-arrow next" onclick="nextHeroSlide()">❯</button>
+        <div class="hero-dots">
+            <span class="hero-dot active" onclick="goToHeroSlide(0)"></span>
+            <span class="hero-dot" onclick="goToHeroSlide(1)"></span>
+            <span class="hero-dot" onclick="goToHeroSlide(2)"></span>
+            <span class="hero-dot" onclick="goToHeroSlide(3)"></span>
+            <span class="hero-dot" onclick="goToHeroSlide(4)"></span>
+        </div>
+    </section>
+
+    <!-- ==================== QUICK LINKS ==================== -->
+    <section class="quick-links">
+        <div class="container">
+            <div class="quick-links-grid">
+                <a href="#schedule" class="quick-link-card">
+                    <span class="quick-link-label">2026 SCHEDULE</span>
+                    <span class="quick-link-icon">→</span>
+                </a>
+                <a href="#standings" class="quick-link-card">
+                    <span class="quick-link-label">2025 STANDINGS</span>
+                    <span class="quick-link-icon">→</span>
+                </a>
+                <a href="#news" class="quick-link-card">
+                    <span class="quick-link-label">LATEST NEWS</span>
+                    <span class="quick-link-icon">→</span>
+                </a>
+                <a href="#videos" class="quick-link-card">
+                    <span class="quick-link-label">LATEST VIDEO</span>
+                    <span class="quick-link-icon">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SCHEDULE & RESULTS ==================== -->
+    <section class="schedule-results-section" id="schedule">
+        <div class="container">
+            <h2 class="section-title">SCHEDULE & RESULTS</h2>
+            <div class="schedule-grid">
+                <div class="schedule-card">
+                    <div class="race-position">1</div>
+                    <div class="race-info">
+                        <h3 class="race-name">Bahrain Grand Prix</h3>
+                        <p class="race-date">16 - 18 FEB</p>
+                    </div>
+                    <div class="status-badge">Upcoming</div>
+                </div>
+                <div class="schedule-card">
+                    <div class="race-position">2</div>
+                    <div class="race-info">
+                        <h3 class="race-name">Saudi Arabia GP</h3>
+                        <p class="race-date">23 - 25 FEB</p>
+                    </div>
+                    <div class="status-badge">Upcoming</div>
+                </div>
+                <div class="schedule-card">
+                    <div class="race-position">3</div>
+                    <div class="race-info">
+                        <h3 class="race-name">Australian GP</h3>
+                        <p class="race-date">9 - 11 MAR</p>
+                    </div>
+                    <div class="status-badge">Upcoming</div>
+                </div>
+                <div class="schedule-card">
+                    <div class="race-position">4</div>
+                    <div class="race-info">
+                        <h3 class="race-name">Chinese GP</h3>
+                        <p class="race-date">20 - 22 APR</p>
+                    </div>
+                    <div class="status-badge">Upcoming</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CURRENT RACE INFO ==================== -->
+    <section class="race-info-section">
+        <div class="container">
+            <div class="race-header">
+                <div class="race-status">TEST • 11 - 13 FEB</div>
+                <div class="race-location">
+                    <span class="flag">🇧🇭</span>
+                    <span>Bahrain</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== NEWS SECTION ==================== -->
+    <section class="news-section" id="news">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">LATEST NEWS</h2>
+                <a href="#" class="view-all">View all →</a>
+            </div>
+
+            <div class="news-grid">
+                <!-- Main Featured Article -->
+                <article class="news-card news-featured">
+                    <div class="news-image" style="background-image: url('./images/news_norris.png')"></div>
+                    <div class="news-overlay">
+                        <h3 class="news-title">Norris shares 'surreal feeling' of running number 1</h3>
+                    </div>
+                </article>
+
+                <!-- Secondary Articles -->
+                <article class="news-card news-medium">
+                    <div class="news-image" style="background-image: url('./images/news_domenicali.png')"></div>
+                    <div class="news-overlay">
+                        <h3 class="news-title">DRIVING TOMORROW: Stefano Domenicali on the future of Formula 1</h3>
+                    </div>
+                </article>
+
+                <article class="news-card news-small">
+                    <div class="news-image" style="background-image: url('./images/news_lindblad.png')"></div>
+                    <div class="news-overlay">
+                        <h3 class="news-title">Lindblad excited to get 'first proper go' in 2026 car</h3>
+                    </div>
+                </article>
+
+                <!-- Bottom Row -->
+                <article class="news-card news-small">
+                    <div class="news-image" style="background-image: url('./image 2.jpg')"></div>
+                    <div class="news-overlay">
+                        <h3 class="news-title">Williams ready to take part in Bahrain testing – Vowles</h3>
+                    </div>
+                </article>
+
+                <article class="news-card news-small">
+                    <div class="news-image" style="background-image: url('./image 3.jpg')"></div>
+                    <div class="news-overlay">
+                        <h3 class="news-title">What happened on Day 3 of the Barcelona Shakedown?</h3>
+                    </div>
+                </article>
+
+                <article class="news-card news-medium">
+                    <div class="news-image" style="background-image: url('./Championship')"></div>
+                    <div class="news-overlay">
+                        <h3 class="news-title">2026 Cars Revealed: First look at the new era of F1</h3>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FEATURED VIDEOS ==================== -->
+    <section class="featured-section" id="videos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">FEATURED VIDEO</h2>
+                <div class="section-controls">
+                    <span class="view-all">View all</span>
+                    <button class="video-arrow prev" onclick="prevFeaturedVideo()">❮</button>
+                    <button class="video-arrow next" onclick="nextFeaturedVideo()">❯</button>
+                </div>
+            </div>
+
+            <div class="featured-videos">
+                <div class="video-item active">
+                    <div class="video-thumbnail" style="background-image: url('./image 1.jpg')">
+                        <div class="play-overlay">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <span class="video-duration">7:55</span>
+                    </div>
+                    <h3 class="video-title">F1 Barcelona shakedown 2026: Day 4 Highlights</h3>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail" style="background-image: url('./image 2.jpg')">
+                        <div class="play-overlay">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <span class="video-duration">2:01</span>
+                    </div>
+                    <h3 class="video-title">Arvid Lindblad thanks team after smooth running at Barcelona</h3>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail" style="background-image: url('./image 3.jpg')">
+                        <div class="play-overlay">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <span class="video-duration">2:31</span>
+                    </div>
+                    <h3 class="video-title">Charles Leclerc gets first taste of SF-26 in dry conditions</h3>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail" style="background-image: url('./image6.jpg')">
+                        <div class="play-overlay">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <span class="video-duration">3:45</span>
+                    </div>
+                    <h3 class="video-title">F1 2026 Season Preview - New Cars Unveiled</h3>
+                </div>
+                <div class="video-item">
+                    <div class="video-thumbnail" style="background-image: url('./image7.jpg')">
+                        <div class="play-overlay">
+                            <div class="play-button">▶</div>
+                        </div>
+                        <span class="video-duration">4:12</span>
+                    </div>
+                    <h3 class="video-title">Driver Interviews - 2026 Expectations</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== DRIVERS SECTION ==================== -->
+    <section class="drivers-section" id="drivers">
+        <div class="container">
+            <div class="season-header">
+                <div class="red-bar"></div>
+                <h2 class="season-title">2025 SEASON</h2>
+            </div>
+
+            <div class="tab-navigation">
+                <button class="tab-btn active" onclick="switchTab('drivers')">DRIVERS</button>
+                <button class="tab-btn" onclick="switchTab('teams')">TEAMS</button>
+            </div>
+
+            <div class="drivers-grid" id="driversTab">
+                <div class="driver-card">
+                    <div class="driver-image"
+                        style="background-image: url('./verstappen.avif'); background-size: cover; background-position: center;">
+                        <span class="driver-position">2<sup>ND</sup></span>
+                    </div>
+                    <h3 class="driver-name">Max Verstappen</h3>
+                    <p class="driver-team">Red Bull Racing</p>
+                    <div class="driver-stats">
+                        <span class="points">421 PTS</span>
+                    </div>
+                </div>
+
+                <div class="driver-card">
+                    <div class="driver-image"
+                        style="background-image: url('./images/lando_norris.png'); background-size: cover; background-position: top center;">
+                        <span class="driver-position">1<sup>ST</sup></span>
+                    </div>
+                    <h3 class="driver-name">Lando Norris</h3>
+                    <p class="driver-team">McLaren</p>
+                    <div class="driver-stats">
+                        <span class="points">423 PTS</span>
+                    </div>
+                </div>
+
+                <div class="driver-card">
+                    <div class="driver-image"
+                        style="background-image: url('./images/oscar_piastri.png'); background-size: cover; background-position: top center;">
+                        <span class="driver-position">3<sup>RD</sup></span>
+                    </div>
+                    <h3 class="driver-name">Oscar Piastri</h3>
+                    <p class="driver-team">McLaren</p>
+                    <div class="driver-stats">
+                        <span class="points">410 PTS</span>
+                    </div>
+                </div>
+
+                <div class="driver-card">
+                    <div class="driver-image"
+                        style="background-image: url('./images/fernando_alonso.png'); background-size: cover; background-position: top center;">
+                        <span class="driver-position">4<sup>TH</sup></span>
+                    </div>
+                    <h3 class="driver-name">Fernando Alonso</h3>
+                    <p class="driver-team">Aston Martin</p>
+                    <div class="driver-stats">
+                        <span class="points">398 PTS</span>
+                    </div>
+                </div>
+
+                <div class="driver-card">
+                    <div class="driver-image"
+                        style="background-image: url('./nico hulenberg.jpg'); background-size: cover; background-position: center;">
+                        <span class="driver-position">5<sup>TH</sup></span>
+                    </div>
+                    <h3 class="driver-name">Nico Hulkenberg</h3>
+                    <p class="driver-team">Ferrari</p>
+                    <div class="driver-stats">
+                        <span class="points">385 PTS</span>
+                    </div>
+                </div>
+
+                <div class="driver-card">
+                    <div class="driver-image"
+                        style="background-image: url('./gabirel bortelleto.avif'); background-size: cover; background-position: center;">
+                        <span class="driver-position">6<sup>TH</sup></span>
+                    </div>
+                    <h3 class="driver-name">Gabriel Bortoleto</h3>
+                    <p class="driver-team">Sauber</p>
+                    <div class="driver-stats">
+                        <span class="points">372 PTS</span>
+                    </div>
+                </div>
+
+                <div class="driver-card">
+                    <div class="driver-image"
+                        style="background-image: url('./lewis hamilton.jpeg'); background-size: cover; background-position: center;">
+                        <span class="driver-position">7<sup>TH</sup></span>
+                    </div>
+                    <h3 class="driver-name">Lewis Hamilton</h3>
+                    <p class="driver-team">Mercedes</p>
+                    <div class="driver-stats">
+                        <span class="points">358 PTS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="teams-grid hidden" id="teamsTab">
+                <div class="team-card">
+                    <h3 class="team-name">Red Bull Racing</h3>
+                    <div class="team-points">815 PTS</div>
+                </div>
+                <div class="team-card">
+                    <h3 class="team-name">McLaren</h3>
+                    <div class="team-points">833 PTS</div>
+                </div>
+                <div class="team-card">
+                    <h3 class="team-name">Ferrari</h3>
+                    <div class="team-points">742 PTS</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PARTNERS SECTION ==================== -->
+    <section class="partners-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">OUR PARTNERS</h2>
+                <a href="#" class="view-all">View all</a>
+            </div>
+
+            <div class="partners-grid">
+                <div class="partner-logo">
+                    <img src="./lvmh.webp" alt="LVMH" loading="lazy">
+                </div>
+                <div class="partner-logo">
+                    <img src="./pirelli.webp" alt="Pirelli" loading="lazy">
+                </div>
+                <div class="partner-logo">
+                    <img src="./aramco.webp" alt="Aramco" loading="lazy">
+                </div>
+                <div class="partner-logo">
+                    <img src="./heinkein logo.webp" alt="Heineken" loading="lazy">
+                </div>
+                <div class="partner-logo">
+                    <img src="./aws logo.webp" alt="AWS" loading="lazy">
+                </div>
+                <div class="partner-logo">
+                    <img src="./lenovo.webp" alt="Lenovo" loading="lazy">
+                </div>
+                <div class="partner-logo">
+                    <img src="./dhl.webp" alt="DHL" loading="lazy">
+                </div>
+                <div class="partner-logo">
+                    <img src="./qatar airways.webp" alt="Qatar Airways" loading="lazy">
+                </div>
+                <div class="partner-logo">
+                    <img src="./msc.webp" alt="MSC" loading="lazy">
+                </div>
+                <div class="partner-logo">
+                    <img src="./salesforce.webp" alt="Salesforce" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Competitions</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Formula 1</a></li>
+                    <li><a href="#">Formula 2</a></li>
+                    <li><a href="#">Formula 3</a></li>
+                    <li><a href="#">Academy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Schedule</a></li>
+                    <li><a href="#">Results</a></li>
+                    <li><a href="#">Standings</a></li>
+                    <li><a href="#">Videos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About F1</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Store</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#" class="social-icon">f</a>
+                    <a href="#" class="social-icon">𝕏</a>
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">▶</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Formula 1 World Championship Limited. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>
