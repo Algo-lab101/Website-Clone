@@ -24,6 +24,9 @@
                 <span class="logo-sub">FORMULA 1</span>
             </div>
 
+            <!-- Checkbox Hack for Mobile Menu -->
+            <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+
             <ul class="nav-menu">
                 <li><a href="#schedule">Schedule</a></li>
                 <li><a href="#results">Results</a></li>
@@ -35,10 +38,10 @@
 
             <div class="nav-icons">
                 <button class="search-btn" aria-label="Search">🔍</button>
-                <button class="menu-toggle" aria-label="Menu" onclick="toggleMenu()">☰</button>
+                <label for="nav-toggle" class="menu-toggle" aria-label="Menu">☰</label>
             </div>
 
-            <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu">
                 <a href="#schedule">Schedule</a>
                 <a href="#results">Results</a>
                 <a href="#news">News</a>
@@ -51,47 +54,49 @@
 
     <!-- ==================== HERO CAROUSEL ==================== -->
     <section class="hero-section">
-        <div class="hero-carousel">
-            <div class="hero-slide active" style="background-image: url('./images/Next%20race.jpg')">
-                <div class="hero-content">
-                    <h1 class="hero-title">NEXT RACE</h1>
-                    <p class="hero-subtitle">Bahrain Grand Prix</p>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <div class="hero-slide" id="slide-1" style="background-image: url('./images/Next%20race.jpg')">
+                    <div class="hero-content">
+                        <h1 class="hero-title">NEXT RACE</h1>
+                        <p class="hero-subtitle">Bahrain Grand Prix</p>
+                    </div>
+                </div>
+                <div class="hero-slide" id="slide-2" style="background-image: url('./Championship')">
+                    <div class="hero-content">
+                        <h1 class="hero-title">CHAMPIONSHIP</h1>
+                        <p class="hero-subtitle">2025 Season Underway</p>
+                    </div>
+                </div>
+                <div class="hero-slide" id="slide-3" style="background-image: url('./latest%20action')">
+                    <div class="hero-content">
+                        <h1 class="hero-title">LATEST ACTION</h1>
+                        <p class="hero-subtitle">Barcelona Shakedown</p>
+                    </div>
+                </div>
+                <div class="hero-slide" id="slide-4" style="background-image: url('./Team%20battles')">
+                    <div class="hero-content">
+                        <h1 class="hero-title">TEAM BATTLES</h1>
+                        <p class="hero-subtitle">2025 Championship Fight</p>
+                    </div>
+                </div>
+                <div class="hero-slide" id="slide-5" style="background-image: url('./drivers%20focus')">
+                    <div class="hero-content">
+                        <h1 class="hero-title">DRIVER FOCUS</h1>
+                        <p class="hero-subtitle">Top Performers</p>
+                    </div>
                 </div>
             </div>
-            <div class="hero-slide" style="background-image: url('./Championship')">
-                <div class="hero-content">
-                    <h1 class="hero-title">CHAMPIONSHIP</h1>
-                    <p class="hero-subtitle">2025 Season Underway</p>
-                </div>
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-dots">
+                <a href="#slide-1" class="hero-dot"></a>
+                <a href="#slide-2" class="hero-dot"></a>
+                <a href="#slide-3" class="hero-dot"></a>
+                <a href="#slide-4" class="hero-dot"></a>
+                <a href="#slide-5" class="hero-dot"></a>
             </div>
-            <div class="hero-slide" style="background-image: url('./latest%20action')">
-                <div class="hero-content">
-                    <h1 class="hero-title">LATEST ACTION</h1>
-                    <p class="hero-subtitle">Barcelona Shakedown</p>
-                </div>
-            </div>
-            <div class="hero-slide" style="background-image: url('./Team%20battles')">
-                <div class="hero-content">
-                    <h1 class="hero-title">TEAM BATTLES</h1>
-                    <p class="hero-subtitle">2025 Championship Fight</p>
-                </div>
-            </div>
-            <div class="hero-slide" style="background-image: url('./drivers%20focus')">
-                <div class="hero-content">
-                    <h1 class="hero-title">DRIVER FOCUS</h1>
-                    <p class="hero-subtitle">Top Performers</p>
-                </div>
-            </div>
-        </div>
-        <div class="hero-overlay"></div>
-        <button class="hero-arrow prev" onclick="prevHeroSlide()">❮</button>
-        <button class="hero-arrow next" onclick="nextHeroSlide()">❯</button>
-        <div class="hero-dots">
-            <span class="hero-dot active" onclick="goToHeroSlide(0)"></span>
-            <span class="hero-dot" onclick="goToHeroSlide(1)"></span>
-            <span class="hero-dot" onclick="goToHeroSlide(2)"></span>
-            <span class="hero-dot" onclick="goToHeroSlide(3)"></span>
-            <span class="hero-dot" onclick="goToHeroSlide(4)"></span>
         </div>
     </section>
 
@@ -237,13 +242,12 @@
                 <h2 class="section-title">FEATURED VIDEO</h2>
                 <div class="section-controls">
                     <span class="view-all">View all</span>
-                    <button class="video-arrow prev" onclick="prevFeaturedVideo()">❮</button>
-                    <button class="video-arrow next" onclick="nextFeaturedVideo()">❯</button>
+                    <!-- Navigation arrows removed as we used native scroll -->
                 </div>
             </div>
 
-            <div class="featured-videos">
-                <div class="video-item active">
+            <div class="video-carousel-container">
+                <div class="video-item">
                     <div class="video-thumbnail" style="background-image: url('./image 1.jpg')">
                         <div class="play-overlay">
                             <div class="play-button">▶</div>
@@ -300,109 +304,118 @@
                 <h2 class="season-title">2025 SEASON</h2>
             </div>
 
-            <div class="tab-navigation">
-                <button class="tab-btn active" onclick="switchTab('drivers')">DRIVERS</button>
-                <button class="tab-btn" onclick="switchTab('teams')">TEAMS</button>
-            </div>
+            <div class="tabs-container">
+                <input type="radio" name="season-tab" id="tab-drivers" checked>
+                <input type="radio" name="season-tab" id="tab-teams">
 
-            <div class="drivers-grid" id="driversTab">
-                <div class="driver-card">
-                    <div class="driver-image"
-                        style="background-image: url('./verstappen.avif'); background-size: cover; background-position: center;">
-                        <span class="driver-position">2<sup>ND</sup></span>
-                    </div>
-                    <h3 class="driver-name">Max Verstappen</h3>
-                    <p class="driver-team">Red Bull Racing</p>
-                    <div class="driver-stats">
-                        <span class="points">421 PTS</span>
-                    </div>
+                <div class="tab-navigation">
+                    <label for="tab-drivers" class="tab-btn">DRIVERS</label>
+                    <label for="tab-teams" class="tab-btn">TEAMS</label>
                 </div>
 
-                <div class="driver-card">
-                    <div class="driver-image"
-                        style="background-image: url('./images/lando_norris.png'); background-size: cover; background-position: top center;">
-                        <span class="driver-position">1<sup>ST</sup></span>
-                    </div>
-                    <h3 class="driver-name">Lando Norris</h3>
-                    <p class="driver-team">McLaren</p>
-                    <div class="driver-stats">
-                        <span class="points">423 PTS</span>
+                <div class="tab-content drivers-content">
+                    <div class="drivers-grid">
+                        <div class="driver-card">
+                            <div class="driver-image"
+                                style="background-image: url('./verstappen.avif'); background-size: cover; background-position: center;">
+                                <span class="driver-position">2<sup>ND</sup></span>
+                            </div>
+                            <h3 class="driver-name">Max Verstappen</h3>
+                            <p class="driver-team">Red Bull Racing</p>
+                            <div class="driver-stats">
+                                <span class="points">421 PTS</span>
+                            </div>
+                        </div>
+
+                        <div class="driver-card">
+                            <div class="driver-image"
+                                style="background-image: url('./images/lando_norris.png'); background-size: cover; background-position: top center;">
+                                <span class="driver-position">1<sup>ST</sup></span>
+                            </div>
+                            <h3 class="driver-name">Lando Norris</h3>
+                            <p class="driver-team">McLaren</p>
+                            <div class="driver-stats">
+                                <span class="points">423 PTS</span>
+                            </div>
+                        </div>
+
+                        <div class="driver-card">
+                            <div class="driver-image"
+                                style="background-image: url('./images/oscar_piastri.png'); background-size: cover; background-position: top center;">
+                                <span class="driver-position">3<sup>RD</sup></span>
+                            </div>
+                            <h3 class="driver-name">Oscar Piastri</h3>
+                            <p class="driver-team">McLaren</p>
+                            <div class="driver-stats">
+                                <span class="points">410 PTS</span>
+                            </div>
+                        </div>
+
+                        <div class="driver-card">
+                            <div class="driver-image"
+                                style="background-image: url('./images/fernando_alonso.png'); background-size: cover; background-position: top center;">
+                                <span class="driver-position">4<sup>TH</sup></span>
+                            </div>
+                            <h3 class="driver-name">Fernando Alonso</h3>
+                            <p class="driver-team">Aston Martin</p>
+                            <div class="driver-stats">
+                                <span class="points">398 PTS</span>
+                            </div>
+                        </div>
+
+                        <div class="driver-card">
+                            <div class="driver-image"
+                                style="background-image: url('./nico hulenberg.jpg'); background-size: cover; background-position: center;">
+                                <span class="driver-position">5<sup>TH</sup></span>
+                            </div>
+                            <h3 class="driver-name">Nico Hulkenberg</h3>
+                            <p class="driver-team">Ferrari</p>
+                            <div class="driver-stats">
+                                <span class="points">385 PTS</span>
+                            </div>
+                        </div>
+
+                        <div class="driver-card">
+                            <div class="driver-image"
+                                style="background-image: url('./gabirel bortelleto.avif'); background-size: cover; background-position: center;">
+                                <span class="driver-position">6<sup>TH</sup></span>
+                            </div>
+                            <h3 class="driver-name">Gabriel Bortoleto</h3>
+                            <p class="driver-team">Sauber</p>
+                            <div class="driver-stats">
+                                <span class="points">372 PTS</span>
+                            </div>
+                        </div>
+
+                        <div class="driver-card">
+                            <div class="driver-image"
+                                style="background-image: url('./lewis hamilton.jpeg'); background-size: cover; background-position: center;">
+                                <span class="driver-position">7<sup>TH</sup></span>
+                            </div>
+                            <h3 class="driver-name">Lewis Hamilton</h3>
+                            <p class="driver-team">Mercedes</p>
+                            <div class="driver-stats">
+                                <span class="points">358 PTS</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="driver-card">
-                    <div class="driver-image"
-                        style="background-image: url('./images/oscar_piastri.png'); background-size: cover; background-position: top center;">
-                        <span class="driver-position">3<sup>RD</sup></span>
+                <div class="tab-content teams-content">
+                    <div class="teams-grid">
+                        <div class="team-card">
+                            <h3 class="team-name">Red Bull Racing</h3>
+                            <div class="team-points">815 PTS</div>
+                        </div>
+                        <div class="team-card">
+                            <h3 class="team-name">McLaren</h3>
+                            <div class="team-points">833 PTS</div>
+                        </div>
+                        <div class="team-card">
+                            <h3 class="team-name">Ferrari</h3>
+                            <div class="team-points">742 PTS</div>
+                        </div>
                     </div>
-                    <h3 class="driver-name">Oscar Piastri</h3>
-                    <p class="driver-team">McLaren</p>
-                    <div class="driver-stats">
-                        <span class="points">410 PTS</span>
-                    </div>
-                </div>
-
-                <div class="driver-card">
-                    <div class="driver-image"
-                        style="background-image: url('./images/fernando_alonso.png'); background-size: cover; background-position: top center;">
-                        <span class="driver-position">4<sup>TH</sup></span>
-                    </div>
-                    <h3 class="driver-name">Fernando Alonso</h3>
-                    <p class="driver-team">Aston Martin</p>
-                    <div class="driver-stats">
-                        <span class="points">398 PTS</span>
-                    </div>
-                </div>
-
-                <div class="driver-card">
-                    <div class="driver-image"
-                        style="background-image: url('./nico hulenberg.jpg'); background-size: cover; background-position: center;">
-                        <span class="driver-position">5<sup>TH</sup></span>
-                    </div>
-                    <h3 class="driver-name">Nico Hulkenberg</h3>
-                    <p class="driver-team">Ferrari</p>
-                    <div class="driver-stats">
-                        <span class="points">385 PTS</span>
-                    </div>
-                </div>
-
-                <div class="driver-card">
-                    <div class="driver-image"
-                        style="background-image: url('./gabirel bortelleto.avif'); background-size: cover; background-position: center;">
-                        <span class="driver-position">6<sup>TH</sup></span>
-                    </div>
-                    <h3 class="driver-name">Gabriel Bortoleto</h3>
-                    <p class="driver-team">Sauber</p>
-                    <div class="driver-stats">
-                        <span class="points">372 PTS</span>
-                    </div>
-                </div>
-
-                <div class="driver-card">
-                    <div class="driver-image"
-                        style="background-image: url('./lewis hamilton.jpeg'); background-size: cover; background-position: center;">
-                        <span class="driver-position">7<sup>TH</sup></span>
-                    </div>
-                    <h3 class="driver-name">Lewis Hamilton</h3>
-                    <p class="driver-team">Mercedes</p>
-                    <div class="driver-stats">
-                        <span class="points">358 PTS</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="teams-grid hidden" id="teamsTab">
-                <div class="team-card">
-                    <h3 class="team-name">Red Bull Racing</h3>
-                    <div class="team-points">815 PTS</div>
-                </div>
-                <div class="team-card">
-                    <h3 class="team-name">McLaren</h3>
-                    <div class="team-points">833 PTS</div>
-                </div>
-                <div class="team-card">
-                    <h3 class="team-name">Ferrari</h3>
-                    <div class="team-points">742 PTS</div>
                 </div>
             </div>
         </div>
@@ -501,7 +514,7 @@
     </footer>
 
     <!-- External JavaScript -->
-    <script src="script.js"></script>
+    <!-- Script Removed -->
 </body>
 
 </html>

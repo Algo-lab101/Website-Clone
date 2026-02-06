@@ -1,4 +1,4 @@
-/* ==================== CSS VARIABLES & DARK MODE ==================== */
+/* ==================== CSS VARIABLES ==================== */
 :root {
     --color-red: #E10600;
     --color-red-glow: rgba(225, 6, 0, 0.4);
@@ -10,12 +10,9 @@
     --color-gold: #FDBF24;
     --color-gold-glow: rgba(253, 191, 36, 0.3);
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-fast: all 0.15s ease;
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
-    --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
-    --shadow-red: 0 4px 30px rgba(225, 6, 0, 0.3);
-    --glass-bg: rgba(20, 20, 20, 0.8);
+    --glass-bg: rgba(20, 20, 20, 0.9);
     --glass-border: rgba(255, 255, 255, 0.1);
 }
 
@@ -180,70 +177,12 @@ body {
     }
 }
 
+/* ==================== REMOVED JS THEME TOGGLE & ANIMATIONS ==================== */
+/* Animations simplified or removed where JS trigger was needed */
 .animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.animate-on-scroll.visible {
     opacity: 1;
-    transform: translateY(0);
-}
-
-/* Stagger animations */
-.stagger-1 {
-    animation-delay: 0.1s;
-}
-
-.stagger-2 {
-    animation-delay: 0.2s;
-}
-
-.stagger-3 {
-    animation-delay: 0.3s;
-}
-
-.stagger-4 {
-    animation-delay: 0.4s;
-}
-
-.stagger-5 {
-    animation-delay: 0.5s;
-}
-
-.stagger-6 {
-    animation-delay: 0.6s;
-}
-
-.stagger-7 {
-    animation-delay: 0.7s;
-}
-
-/* ==================== DARK MODE TOGGLE ==================== */
-.theme-toggle {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 1001;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    transition: var(--transition);
-    box-shadow: var(--shadow-md);
-}
-
-.theme-toggle:hover {
-    transform: scale(1.1);
-    box-shadow: var(--shadow-red);
+    /* Default to visible without JS */
+    transform: none;
 }
 
 /* ==================== NAVIGATION ==================== */
@@ -364,8 +303,24 @@ nav {
     transform: scale(1.05);
 }
 
+/* Checkbox Hack for Mobile Menu */
+.nav-toggle-input {
+    display: none;
+}
+
 .menu-toggle {
     display: none;
+    background: none;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    font-size: 24px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: var(--transition);
 }
 
 .mobile-menu {
@@ -380,11 +335,17 @@ nav {
     flex-direction: column;
     padding: 20px;
     gap: 8px;
+    transform-origin: top;
+    transform: scaleY(0);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.mobile-menu.active {
+/* Show Menu When Checkbox Checked */
+#nav-toggle:checked~.mobile-menu {
     display: flex;
-    animation: fadeIn 0.3s ease;
+    transform: scaleY(1);
+    opacity: 1;
 }
 
 .mobile-menu a {
@@ -401,6 +362,16 @@ nav {
     background: rgba(225, 6, 0, 0.15);
     color: var(--color-red);
     transform: translateX(8px);
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
 }
 
 /* ==================== HERO SECTION ==================== */
@@ -430,107 +401,43 @@ nav {
     animation: speedLines 3s linear infinite;
 }
 
-.hero-carousel {
+/* Scroll Snap Carousel */
+.carousel-container {
     position: relative;
     width: 100%;
     height: 100%;
 }
 
-.hero-slide {
-    position: absolute;
+.carousel-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
     width: 100%;
     height: 100%;
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+}
+
+.hero-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    scroll-snap-align: start;
+    position: relative;
+    /* Changed from absolute to flow in flex */
     background-size: cover;
     background-position: center;
-    opacity: 0;
-    transition: opacity 1s ease-in-out, transform 8s ease-out;
     transform: scale(1);
+    transition: transform 0.5s ease;
 }
 
-.hero-slide.active {
-    opacity: 1;
-    transform: scale(1.05);
-}
-
-.hero-content {
-    position: absolute;
-    bottom: 60px;
-    left: 50px;
-    z-index: 3;
-    animation: slideInLeft 0.8s ease-out;
-}
-
-.hero-title {
-    font-size: 56px;
-    font-weight: 900;
-    margin-bottom: 12px;
-    letter-spacing: 4px;
-    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
-    background: linear-gradient(135deg, #fff 0%, #ccc 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.hero-subtitle {
-    font-size: 22px;
-    color: var(--color-text-secondary);
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-}
-
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 100%);
-    z-index: 2;
-}
-
-/* Glassmorphism overlay */
-.hero-overlay::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 150px;
-    background: linear-gradient(to top, var(--color-dark), transparent);
-}
-
-.hero-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    color: white;
-    border: 1px solid var(--glass-border);
-    width: 56px;
-    height: 56px;
-    font-size: 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    transition: var(--transition);
-    border-radius: 50%;
-}
-
-.hero-arrow:hover {
-    background: var(--color-red);
-    border-color: var(--color-red);
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: var(--shadow-red);
-}
-
-.hero-arrow.prev {
-    left: 24px;
-}
-
-.hero-arrow.next {
-    right: 24px;
+.hero-slide:hover {
+    transform: scale(1.02);
 }
 
 .hero-dots {
@@ -546,20 +453,19 @@ nav {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.4);
     cursor: pointer;
     transition: var(--transition);
     border: 2px solid transparent;
+    display: block;
 }
 
-.hero-dot.active {
+.hero-dot:hover,
+.hero-dot:active,
+.hero-dot:focus {
+    /* Basic visual feedback since we can't track active slide easily without JS */
     background: var(--color-red);
     transform: scale(1.3);
-    box-shadow: 0 0 15px var(--color-red-glow);
-}
-
-.hero-dot:hover {
-    background: rgba(255, 255, 255, 0.6);
 }
 
 /* ==================== QUICK LINKS ==================== */
@@ -795,6 +701,10 @@ nav {
     gap: 20px;
 }
 
+/* Video Carousel Scroll Snap */
+
+
+/* View All Link */
 .view-all {
     font-size: 14px;
     font-weight: 600;
@@ -802,41 +712,35 @@ nav {
     transition: var(--transition);
     color: var(--color-text-secondary);
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .view-all:hover {
     color: var(--color-red);
 }
 
-.video-arrow {
-    background: var(--color-gray);
-    border: 1px solid var(--glass-border);
-    color: var(--color-text);
-    font-size: 18px;
-    cursor: pointer;
-    width: 44px;
-    height: 44px;
+/* Video Carousel Scroll Snap */
+.video-carousel-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: var(--transition);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 24px;
+    padding-bottom: 20px;
+    /* Space for scrollbar if visible or touch */
+    width: 100%;
+    scrollbar-width: none;
 }
 
-.video-arrow:hover {
-    background: var(--color-red);
-    border-color: var(--color-red);
-    transform: scale(1.1);
-}
-
-.featured-videos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+.video-carousel-container::-webkit-scrollbar {
+    display: none;
 }
 
 .video-item {
-    animation: fadeInUp 0.8s ease-out backwards;
+    min-width: 300px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
     cursor: pointer;
     transition: var(--transition);
 }
@@ -852,7 +756,15 @@ nav {
     background-position: center;
     border-radius: 12px;
     overflow: hidden;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
+    border: 1px solid var(--glass-border);
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+}
+
+.video-thumbnail:hover {
+    transform: scale(1.02);
+    border-color: var(--color-red);
     box-shadow: var(--shadow-md);
 }
 
@@ -1088,6 +1000,11 @@ nav {
     letter-spacing: 3px;
 }
 
+/* Radio Hack for Tabs */
+input[name="season-tab"] {
+    display: none;
+}
+
 .tab-navigation {
     display: flex;
     gap: 32px;
@@ -1097,8 +1014,8 @@ nav {
 }
 
 .tab-btn {
-    background: none;
-    border: none;
+    display: inline-block;
+    /* Ensure label behaves like button */
     color: var(--color-text-secondary);
     font-size: 15px;
     font-weight: 700;
@@ -1113,11 +1030,29 @@ nav {
     color: var(--color-text);
 }
 
-.tab-btn.active {
+/* Default Content State */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Checked States */
+#tab-drivers:checked~.drivers-content {
+    display: block;
+}
+
+#tab-teams:checked~.teams-content {
+    display: block;
+}
+
+/* Active Tab Styling */
+#tab-drivers:checked~.tab-navigation label[for="tab-drivers"],
+#tab-teams:checked~.tab-navigation label[for="tab-teams"] {
     color: var(--color-red);
 }
 
-.tab-btn.active::after {
+#tab-drivers:checked~.tab-navigation label[for="tab-drivers"]::after,
+#tab-teams:checked~.tab-navigation label[for="tab-teams"]::after {
     content: '';
     position: absolute;
     bottom: -20px;
@@ -1223,9 +1158,7 @@ nav {
     gap: 28px;
 }
 
-.teams-grid.hidden {
-    display: none;
-}
+/* Removed .teams-grid.hidden as visibility is handled by tab-content now */
 
 .team-card {
     background: var(--color-gray);
